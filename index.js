@@ -30,7 +30,7 @@ var plugins = [
     register: require('yar'),
     options: {
       cookieOptions: {
-        password: 'passwords',
+        password: 'Blahblah',
         isSecure: false
       }
     } 
