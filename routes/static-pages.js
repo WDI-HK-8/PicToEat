@@ -6,6 +6,15 @@ exports.register = function(server, option, next) {
         handler: function(request, reply){
           reply.view('index');
         }
+      },
+      {
+        method: 'GET',
+        path: "/public/{path*}",
+        handler: {
+          directory: {
+            path: 'public'
+          }
+        }
       }
     ])
   next();
@@ -13,5 +22,5 @@ exports.register = function(server, option, next) {
 
 exports.register.attributes = {
   name: 'static-pages-route',
-  version: 0.0.1
+  version: '0.0.1'
 };
