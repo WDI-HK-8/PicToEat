@@ -28,7 +28,7 @@ var plugins = [
   { 
     register: require('hapi-mongodb'),
     options: {
-      url: "mongodb://127.0.0.1:27017/hapi-twitter",
+      url: "mongodb://127.0.0.1:27017/pic2eat",
       settings: {
         db: {
           native_parser: false
