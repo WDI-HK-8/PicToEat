@@ -31,14 +31,13 @@ exports.register = function(server, options, next) {
             user_id: userMongo._id,
             session_id: randomKeyGenerator()
           };
-          console.log(userMongo._id);
+
           db.collection('sessions').insert(session, function(err, writeResult) {
             if (err) {
               return reply('Internal MongoDb error', err);
             }
-            request.state.session = ('pic2eat_session', session);
-            reply(writeResult);
-            console.log(request.state.session);
+            request.session.set('pic2eat_session', session);
+            return reply({ authorized: true });
             });
           });
         });
@@ -59,8 +58,6 @@ exports.register = function(server, options, next) {
       handler: function(request,reply){
         var session = request.session.get('pic2eat_session');
         var db = request.server.plugins['hapi-mongodb'].db;
-        console.log(request.state.session);
-        console.log("hi",session);
         if (!session) { return reply('You have already logged out') }
 
         db.collection('users').remove( { session: session.session_id }, function(err,writeResult) {
