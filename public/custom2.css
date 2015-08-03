@@ -4,16 +4,18 @@
 }
 
 body {
-  background-image: url('images/burger-wallpaper.jpg');
+  background-image: url('images/pizza-wallpaper.jpg');
   background-repeat: no-repeat;
   background-position: center; 
 }
 
-.red {
-  color: #F93249;
-}
-
-#birds {
+#main {
+  margin: 15px auto;
+  padding: 3px;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -26,7 +28,7 @@ h1 {
 h2, a {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 50px;
-  color: #339793;   
+  color: #000000;   
 }
 
 a {
@@ -49,33 +51,11 @@ input, button {
 }
 
 
-li, .tweet-form > div > button, input {
-  height: 50px;
-}
-
-li {
-  color: #FFFFFF;
-  font-size: 20px;
-  font: justify;  
-  border-radius: 10px;
-  border: 5px solid #71BCB8;
-  margin: 80px 5px 5px;
-  list-style: none;
-  padding: 10px;  
-}
-
-
 #sign-in {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
 }
-
-/*#sign-up {
-  background-color: #339793;
-  color: #FFFFFF;
-  width: 300px;
-}*/
 
 button:hover, button:focus {
   background-color: #0B6F6B;
