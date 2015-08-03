@@ -31,12 +31,13 @@ exports.register = function(server, options, next) {
             user_id: userMongo._id,
             session_id: randomKeyGenerator()
           };
-          console.log(userMongo._id);
+
           db.collection('sessions').insert(session, function(err, writeResult) {
             if (err) {
               return reply('Internal MongoDb error', err);
             }
             request.session.set('pic2eat_session', session);
+
             // return reply({ authorized: true });
             reply(writeResult);
             });
