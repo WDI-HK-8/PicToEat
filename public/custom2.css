@@ -54,8 +54,8 @@ input {
   width: 300px;
 }
 
-
-#sign-in, #sign-up {
+#sign-in {
+>>>>>>> styling(html): Add some CSS and imagery to landing and home page
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
