@@ -28,7 +28,7 @@ exports.register = function(server, options, next){
 
               db.collection('users').insert(user, function(err, writeResult){
                 if (err) {
-                  return reply("Internal MongoDB error", err)
+                  return reply("Internal MongoDB error")
                 }
 
                 reply(writeResult);
@@ -53,17 +53,17 @@ exports.register = function(server, options, next){
       method: 'GET',
       path: '/users',
       handler: function(request,reply){
-        // Auth.authenticated(request, function(session){
-        //   if(!session.authenticated) {
-        //     return reply(session);
-        //   }
-          var db = request.server.plugins['hapi-mongodb'].db;
+        Auth.authenticated(request, function(session){
+          if(!session.authenticated) {
+            return reply(session);
+          }
+        var db = request.server.plugins['hapi-mongodb'].db;
 
-          db.collection('users').find().toArray(function(err, users){
-            if (err) { return reply("Internal MongoDB error", err); }
-            reply(users);
-          });
-        // });
+        db.collection('users').find().toArray(function(err, users){
+          if (err) { return reply("Internal MongoDB error"); }
+          reply(users);
+        });
+        });
       }
     }
   ]);
