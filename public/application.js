@@ -8,29 +8,32 @@ $(document).ready(function(){
   var username2 = $('#username2');
   var password2 = $('#password2');  
 
-  // $('#sign-in').click(function() {
-  //   event.preventDefault();
-  //   var username = $('input[id="username"]');
-  //   var password = $('input[id="password"]');
-  //   $.ajax({
-  //     type: 'POST',
-  //     url: 'sessions',
-  //     data: {
-  //       user: {      
-  //         username: username.val(),
-  //         password: password.val()
-  //       }
-  //     },  
-  //     dataType: 'json',
-  //     success: function(response) {
-  //     if (response.userExists) { 
-  //       console.log("Success", response);
-  //       } else {
-  //         console.log("No such user or wrong password")
-  //       }
-  //     }
-  //   });
-  // }); 
+  $('#sign-in').click(function(event) {
+    event.preventDefault();
+    var username = $('input[id="username"]');
+    var password = $('input[id="password"]');
+    console.log(username.val());
+    console.log(password.val());
+    $.ajax({
+      type: 'POST',
+      url: 'sessions',
+      data: {
+        user: {      
+          username: username.val(),
+          password: password.val()
+        }
+      },  
+      dataType: 'json',
+      success: function(response) {
+      console.log(response);  
+      if (response.ok === 1) { 
+        console.log("Success", response);
+        } else {
+          console.log("No such user or wrong password")
+        }
+      }
+    });
+  }); 
 
   $('#sign-up').click(function() {
     event.preventDefault();
