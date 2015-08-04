@@ -28,7 +28,7 @@ h2, a {
   color: #000000;   
 }
 
-a {
+/*a {
   font-size: 35px;
   text-decoration: underline;
   font-style: italic;
@@ -37,8 +37,13 @@ a {
 }
 
 a:hover {
+<<<<<<< HEAD
   color: #339793;
 }
+=======
+  color: #0B6F6B;
+}*/
+>>>>>>> enhancement(html): Styling to sign-up page and user notification
 
 input, button {
   padding: 10px;
@@ -63,6 +68,12 @@ img {
   border-radius: 10px;
   border: 2px solid #339793;
 }
+
+/*#sign-in, #sign-up {
+  background-color: #339793;
+  color: #FFFFFF;
+  width: 140px;
+}*/
 
 #topbar {
   background-image: url('images/burger-wallpaper.jpg');
