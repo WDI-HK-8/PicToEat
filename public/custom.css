@@ -9,14 +9,6 @@ body {
   background-position: center; 
 }
 
-.red {
-  color: #F93249;
-}
-
-#birds {
-  text-align: center;
-}
-
 h1 {
   font-family: 'Give You Glory', cursive;
   font-size: 80px;
@@ -49,33 +41,11 @@ input, button {
 }
 
 
-li, .tweet-form > div > button, input {
-  height: 50px;
-}
-
-li {
-  color: #FFFFFF;
-  font-size: 20px;
-  font: justify;  
-  border-radius: 10px;
-  border: 5px solid #71BCB8;
-  margin: 80px 5px 5px;
-  list-style: none;
-  padding: 10px;  
-}
-
-
 #sign-in {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
 }
-
-/*#sign-up {
-  background-color: #339793;
-  color: #FFFFFF;
-  width: 300px;
-}*/
 
 button:hover, button:focus {
   background-color: #0B6F6B;

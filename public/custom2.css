@@ -51,11 +51,12 @@ input, button {
 }
 
 
-#sign-in {
+#sign-in, #sign-up {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
 }
+
 
 button:hover, button:focus {
   background-color: #0B6F6B;
