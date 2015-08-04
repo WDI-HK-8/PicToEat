@@ -30,7 +30,7 @@ exports.register = function(server, option, next) {
       reply.view('sign-up');
     }
   }
-  ])
+  ]);
   next();
 };
 
