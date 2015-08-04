@@ -11,10 +11,9 @@ exports.register = function(server, options, next) {
       handler: function(request, reply){
         var db = request.server.plugins['hapi-mongodb'].db;
         var user = request.payload.user;
-
-        db.collection('users').findOne( { email: user.email }, function(err, userMongo){
+        db.collection('users').findOne( { username: user.username }, function(err, userMongo){
           if (err) { return reply('Internal MongoDb error'); }
-
+          console.log(userMongo)
           if (userMongo === null) { 
             return reply( {userExist: false} ) 
           }
@@ -32,15 +31,14 @@ exports.register = function(server, options, next) {
             user_id: userMongo._id,
             session_id: randomKeyGenerator()
           };
-
+          console.log(userMongo._id);
           db.collection('sessions').insert(session, function(err, writeResult) {
             if (err) {
               return reply('Internal MongoDb error', err);
             }
-
-            request.session.set('pic2eat_session', session);
-
-            return reply({ authorized: true });
+            console.log(session);
+            request.state.session = (session);
+            reply(writeResult);
             });
           });
         });
