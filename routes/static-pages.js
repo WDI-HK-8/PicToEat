@@ -1,22 +1,22 @@
 exports.register = function(server, option, next) {
   server.route([
-      {
-        method: 'GET',
-        path: "/",
-        handler: function(request, reply){
-          reply.view('index');
-        }
-      },
-      {
-        method: 'GET',
-        path: "/public/{path*}",
-        handler: {
-          directory: {
-            path: 'public'
-          }
-        }
+  {
+    method: 'GET',
+    path: '/',
+    handler: function(request, reply){
+      reply.view('index');
+    }
+  },
+  {
+    method: 'GET',
+    path: '/public/{path*}',
+    handler: {
+      directory: {
+        path: 'public'
       }
-    ])
+    }
+  }
+  ])
   next();
 };
 
