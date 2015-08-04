@@ -63,7 +63,7 @@ $(document).ready(function(){
       },
       error: function(response){
         console.log("Validation failed");
-        wrongLoginInfo("Please complete all fields");
+        wrongLoginInfo("Please complete all fields with a password of 5 characters or more");
 
       }
     });
