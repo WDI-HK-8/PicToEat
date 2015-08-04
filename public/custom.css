@@ -9,6 +9,7 @@ body {
   background-position: center; 
 }
 
+
 h1 {
   font-family: 'Give You Glory', cursive;
   font-size: 80px;
@@ -45,6 +46,16 @@ input, button {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
+}
+
+.wrongInfo { 
+    background: #F65357; 
+    border-bottom: solid 2px #FFFFFF; 
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    padding: 5px 0; 
+    text-align: center; 
+    color: white;
 }
 
 button:hover, button:focus {
