@@ -36,9 +36,9 @@ exports.register = function(server, options, next) {
             if (err) {
               return reply('Internal MongoDb error', err);
             }
-            console.log(session);
-            request.state.session = (session);
+            request.state.session = ('pic2eat_session', session);
             reply(writeResult);
+            console.log(request.state.session);
             });
           });
         });
@@ -59,7 +59,8 @@ exports.register = function(server, options, next) {
       handler: function(request,reply){
         var session = request.session.get('pic2eat_session');
         var db = request.server.plugins['hapi-mongodb'].db;
-
+        console.log(request.state.session);
+        console.log("hi",session);
         if (!session) { return reply('You have already logged out') }
 
         db.collection('users').remove( { session: session.session_id }, function(err,writeResult) {
