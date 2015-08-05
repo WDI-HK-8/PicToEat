@@ -57,15 +57,34 @@ exports.register = function(server, options, next){
           if(!session.authenticated) {
             return reply(session);
           }
-        var db = request.server.plugins['hapi-mongodb'].db;
+          var db = request.server.plugins['hapi-mongodb'].db;
 
-        db.collection('users').find().toArray(function(err, users){
-          if (err) { return reply("Internal MongoDB error"); }
-          reply(users);
-        });
+          db.collection('users').find().toArray(function(err, users){
+            if (err) { return reply("Internal MongoDB error"); }
+            reply(users);
+          });
         });
       }
-    }
+    },
+//-------------Working on
+    // {
+    //   method: 'PATCH',
+    //   path: '/users',
+    //   handler: function(request,reply){
+    //     Auth.authenticated(request, function(result){
+    //       if (!session) { 
+    //         reply('Not logged in');
+    //         return reply(session);
+    //       }
+        
+    //       db.collection('users').findOne( { username: user.username }, function(err, userMongo){
+    //         if (err) { return reply('Internal MongoDb error'); }
+    //         reply();
+    //       });
+    //     });
+    //   }
+    // }
+//---------------
   ]);
   next();
 }
