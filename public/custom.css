@@ -42,10 +42,14 @@ input, button {
 }
 
 
-#sign-in {
+#sign-in, #sign-up {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
+}
+
+.signup-field {
+  width: 350px;
 }
 
 .wrongInfo { 
