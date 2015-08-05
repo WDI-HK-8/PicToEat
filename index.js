@@ -35,7 +35,16 @@ var plugins = [
         }
       }
     }
-  }
+  },
+  // {
+  //   register: require('yar'),
+  //   options: {
+  //     cookieOptions: {
+  //       password: 'excellentpassword5',
+  //       isSecure: false
+  //     }
+  //   }
+  // }
 ];
 
 server.register(plugins, function(err) {
