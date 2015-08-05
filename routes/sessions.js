@@ -60,9 +60,8 @@ exports.register = function(server, options, next) {
         var db = request.server.plugins['hapi-mongodb'].db;
         if (!session) { return reply('You have already logged out') }
 
-        db.collection('users').remove( { session: session.session_id }, function(err,writeResult) {
+        db.collection('sessions').remove( { session_id: session.session_id }, function(err,writeResult) {
           if (err) { return reply('Internal MongoDB error') }
-
           reply(writeResult);
         });
       }
