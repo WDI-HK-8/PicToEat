@@ -21,11 +21,12 @@ h1 {
   font-family: 'Give You Glory', cursive;
   font-size: 80px;
   color: #000000;
+  text-shadow: 2px 2px #0B6F6B;
 }
 
 h2, a {
   font-family: 'Alegreya Sans SC', sans-serif;
-  color: #000000;   
+  color: #000000;       
 }
 
 a {
@@ -34,10 +35,11 @@ a {
   font-style: italic;
   color: #0B6F6B;
   margin: 30px;
+  text-shadow: 1px 1px #001515;
 }
 
 a:hover {
-  color: #339793;
+  color: #00413F;
 }
 
 input, button {
@@ -64,17 +66,18 @@ img {
   border: 2px solid #339793;
 }
 
-#sign-in, #sign-up {
+/*#sign-in, #sign-up {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;
+}*/
 
 #topbar {
   background-image: url('images/burger-wallpaper.jpg');
   background-repeat: no-repeat;
   background-position: center; 
   border-radius: 20px;
-}
+}  
 
 .wrongInfo { 
     background: #F65357; 

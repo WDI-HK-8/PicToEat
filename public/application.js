@@ -11,7 +11,8 @@ $(document).ready(function(){
   var password = $('#password');  
   
   var username2 = $('#username2');
-  var password2 = $('#password2');  
+  var password2 = $('#password2');
+
 
   $('#sign-in').click(function(event) {
     event.preventDefault();
@@ -56,16 +57,16 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: function(response) { 
-      if (response.ok === 1) { 
-        console.log("Success", response);
-        window.location.href = "/home";
-        }
-      },
-      error: function(response){
-        console.log("Validation failed");
-        wrongLoginInfo("Please complete all fields");
+        if (response.ok === 1) { 
+          console.log("Success", response);
+          window.location.href = "/home";
+          }
+        },
+        error: function(response){
+          console.log("Validation failed");
+          wrongLoginInfo("Please complete all fields");
 
-      }
+        }
     });
   });
 
@@ -80,7 +81,69 @@ $(document).ready(function(){
         window.location.href = "/";  
         }
       })
+    } else {
+      window.location.href = "/home";  
     }  
-  })
+  });
+
+  $('#update-details').click(function(event) {
+    $.ajax({
+      type: 'PUT',
+      url: '/users',
+      data: {
+        user: {      
+          password: password.val(),
+          username: username.val(),
+          email: email.val()
+        }
+      },
+      success: function(response){
+        console.log('Info changed', response);
+      }
+    })
+  });
+
+//=====================working on
+
+  //  $('#details').html(html);
+
+
+    
+  //   keys.forEach(function(key){
+  //     html += '<li>';
+  //     html +=   '<div class='col-xs-3'>';
+  //     html +=     key;
+  //     html +=   '</div>';
+  //     html +=   '<div class='col-xs-9'>';
+  //     html +=     response[key]
+  //     html +=   '</div>';
+  //     html += '</li>';
+  //   });
+
+  //   return html;
+  // };
+
+  // var profileInfo = function(response){
+  //   console.log('Response: ', response);
+
+  //   var keys = ['name', 'email', 'username', 'password'];
+
+  //   $.ajax({
+  //       type: 'GET',
+  //       url: '/users',
+  //       dataType: 'JSON',
+  //       success: profileInfo
+  //     });
+  // };
+
+
+//=================================
+
+
+
+
+
+
+
 });
 
