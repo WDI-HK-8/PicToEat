@@ -21,11 +21,12 @@ h1 {
   font-family: 'Give You Glory', cursive;
   font-size: 80px;
   color: #000000;
+  text-shadow: 2px 2px #0B6F6B;
 }
 
 h2, a {
   font-family: 'Alegreya Sans SC', sans-serif;
-  color: #000000;   
+  color: #000000;       
 }
 
 a {
@@ -34,10 +35,11 @@ a {
   font-style: italic;
   color: #0B6F6B;
   margin: 30px;
+  text-shadow: 1px 1px #001515;
 }
 
 a:hover {
-  color: #339793;
+  color: #00413F;
 }
 
 input, button {

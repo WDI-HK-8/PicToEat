@@ -14,12 +14,14 @@ h1 {
   font-family: 'Give You Glory', cursive;
   font-size: 80px;
   color: #000000;
+  text-shadow: 3px 2px #0B6F6B;
 }
 
 h2, a {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 50px;
-  color: #339793;   
+  color: #339793;
+  text-shadow: 1px 1px #000000;     
 }
 
 a {
