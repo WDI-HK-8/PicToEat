@@ -37,7 +37,8 @@ exports.register = function(server, options, next) {
               return reply('Internal MongoDb error', err);
             }
             request.session.set('pic2eat_session', session);
-            return reply({ authorized: true });
+            // return reply({ authorized: true });
+            reply(writeResult);
             });
           });
         });
