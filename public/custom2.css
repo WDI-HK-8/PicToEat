@@ -64,11 +64,6 @@ img {
   border: 2px solid #339793;
 }
 
-#sign-in, #sign-up {
-  background-color: #339793;
-  color: #FFFFFF;
-  width: 140px;
-
 #topbar {
   background-image: url('images/burger-wallpaper.jpg');
   background-repeat: no-repeat;
