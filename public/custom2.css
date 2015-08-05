@@ -4,11 +4,20 @@
 }
 
 body {
-  background-image: url('images/burger-wallpaper.jpg');
+  background-image: url('images/pizza2-wallpaper.jpg');
   background-repeat: no-repeat;
   background-position: center; 
 }
 
+#main {
+  margin: 15px auto;
+  padding: 3px;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-align: center;
+}
 
 h1 {
   font-family: 'Give You Glory', cursive;
@@ -19,10 +28,10 @@ h1 {
 h2, a {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 50px;
-  color: #339793;   
+  color: #000000;   
 }
 
-a {
+/*a {
   font-size: 35px;
   text-decoration: underline;
   font-style: italic;
@@ -30,7 +39,7 @@ a {
 
 a:hover {
   color: #0B6F6B;
-}
+}*/
 
 input, button {
   padding: 10px;
@@ -41,8 +50,12 @@ input, button {
   border: 2px solid #339793;
 }
 
+input {
+  width: 300px;
+}
 
-#sign-in {
+
+#sign-in, #sign-up {
   background-color: #339793;
   color: #FFFFFF;
   width: 140px;

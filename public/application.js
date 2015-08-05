@@ -1,3 +1,8 @@
+function wrongLoginInfo(message) {
+    $("<div />", { class: 'wrongInfo', text: message }).hide().prependTo("body")
+      .slideDown('slow').delay(5000).slideUp(function() { $(this).remove(); });
+}
+
 $(document).ready(function(){
   
   var name = $('#name');
@@ -8,31 +13,35 @@ $(document).ready(function(){
   var username2 = $('#username2');
   var password2 = $('#password2');  
 
-  // $('#sign-in').click(function() {
-  //   event.preventDefault();
-  //   var username = $('input[id="username"]');
-  //   var password = $('input[id="password"]');
-  //   $.ajax({
-  //     type: 'POST',
-  //     url: 'sessions',
-  //     data: {
-  //       user: {      
-  //         username: username.val(),
-  //         password: password.val()
-  //       }
-  //     },  
-  //     dataType: 'json',
-  //     success: function(response) {
-  //     if (response.userExists) { 
-  //       console.log("Success", response);
-  //       } else {
-  //         console.log("No such user or wrong password")
-  //       }
-  //     }
-  //   });
-  // }); 
+  $('#sign-in').click(function(event) {
+    event.preventDefault();
+    var username = $('input[id="username"]');
+    var password = $('input[id="password"]');
+    console.log(username.val());
+    console.log(password.val());
+    $.ajax({
+      type: 'POST',
+      url: 'sessions',
+      data: {
+        user: {      
+          username: username.val(),
+          password: password.val()
+        }
+      },  
+      dataType: 'json',
+      success: function(response) { 
+      if (response.ok === 1) { 
+        console.log("Success", response);
+        window.location.href = "/home";
+        } else {
+          console.log("No such user or wrong password");
+          wrongLoginInfo("Sorry, incorrect username and/or password");
+        }
+      }
+    });
+  }); 
 
-  $('#sign-up').click(function() {
+  $('#sign-up').click(function(event) {
     event.preventDefault();
     $.ajax({
       type: 'POST',
@@ -46,8 +55,16 @@ $(document).ready(function(){
         }
       },
       dataType: 'json',
-      success: function(response) {
-        console.log("Success", response);      
+      success: function(response) { 
+      if (response.ok === 1) { 
+        console.log("Success", response);
+        window.location.href = "/home";
+        }
+      },
+      error: function(response){
+        console.log("Validation failed");
+        wrongLoginInfo("Please complete all fields with a password of 5 characters or more");
+
       }
     });
   });

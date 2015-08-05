@@ -15,8 +15,22 @@ exports.register = function(server, option, next) {
         path: 'public'
       }
     }
+  },
+  {
+    method: 'GET',
+    path: '/home',
+    handler: function(request,reply) {
+      reply.view('home');
+    }
+  },
+  {
+    method: 'GET',
+    path: '/sign-up',
+    handler: function(request,reply) {
+      reply.view('sign-up');
+    }
   }
-  ])
+  ]);
   next();
 };
 
