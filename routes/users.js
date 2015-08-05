@@ -1,26 +1,9 @@
 var Bcrypt = require('bcrypt');
 var Joi = require('joi');
+var Auth = require('./auth');
 
 exports.register = function(server, options, next){
   server.route([
-    {
-      method: 'GET',
-      path: '/users',
-      handler: function(request,reply){
-        Auth.authenticated(request, function(session){
-          if(!session.authenticated) {
-            return reply(session);
-          }
-          var db = request.server.plugins['hapi-mongodb'].db;
-
-          db.collection('users').find().toArray(function(err, users){
-          if (err) { return reply("Internal MongoDB error", err); }
-
-          reply(users);
-          });
-        });
-      }
-    },
     {
       method: 'POST',
       path: '/users',
@@ -34,20 +17,21 @@ exports.register = function(server, options, next){
               {email: user.email}
             ] 
           };
+
           Bcrypt.genSalt(10, function(err, salt){
             Bcrypt.hash(user.password, salt,function(err, encrypted){
               user.password = encrypted;
               db.collection('users').count(uniqUserQuery, function(err, userExist){
-                  if (userExist) {
-                    return reply("Error. Username already exists");
-                  }
+                if (userExist) {
+                  return reply("Error. Username already exists");
+                }
 
               db.collection('users').insert(user, function(err, writeResult){
                 if (err) {
-                  return reply("Internal MongoDB error", err)
+                  return reply("Internal MongoDB error")
                 }
 
-              reply(writeResult);
+                reply(writeResult);
               })
             });
           })
@@ -64,7 +48,24 @@ exports.register = function(server, options, next){
           }
         }
       }
-    }  
+    },
+    {
+      method: 'GET',
+      path: '/users',
+      handler: function(request,reply){
+        Auth.authenticated(request, function(session){
+          if(!session.authenticated) {
+            return reply(session);
+          }
+        var db = request.server.plugins['hapi-mongodb'].db;
+
+        db.collection('users').find().toArray(function(err, users){
+          if (err) { return reply("Internal MongoDB error"); }
+          reply(users);
+        });
+        });
+      }
+    }
   ]);
   next();
 }

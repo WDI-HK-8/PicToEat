@@ -1,11 +1,47 @@
+function wrongLoginInfo(message) {
+    $("<div />", { class: 'wrongInfo', text: message }).hide().prependTo("body")
+      .slideDown('slow').delay(5000).slideUp(function() { $(this).remove(); });
+}
+
 $(document).ready(function(){
+  
   var name = $('#name');
   var email = $('#email');  
+  var username = $('#username');
+  var password = $('#password');  
+  
   var username2 = $('#username2');
   var password2 = $('#password2');  
-  
 
-  $('#sign-up').click(function() {
+  $('#sign-in').click(function(event) {
+    event.preventDefault();
+    var username = $('input[id="username"]');
+    var password = $('input[id="password"]');
+    console.log(username.val());
+    console.log(password.val());
+    $.ajax({
+      type: 'POST',
+      url: 'sessions',
+      data: {
+        user: {      
+          username: username.val(),
+          password: password.val()
+        }
+      },  
+      dataType: 'json',
+      success: function(response) { 
+      if (response.ok === 1) { 
+        console.log("Success", response);
+        window.location.href = "/home";
+        } else {
+          console.log("No such user or wrong password");
+          wrongLoginInfo("Sorry, incorrect username and/or password");
+        }
+      }
+    });
+  }); 
+
+  $('#sign-up').click(function(event) {
     event.preventDefault();
     $.ajax({
       type: 'POST',
@@ -19,9 +55,32 @@ $(document).ready(function(){
         }
       },
       dataType: 'json',
-      success: function(response) {
-        console.log("Success", response);      
+      success: function(response) { 
+      if (response.ok === 1) { 
+        console.log("Success", response);
+        window.location.href = "/home";
+        }
+      },
+      error: function(response){
+        console.log("Validation failed");
+        wrongLoginInfo("Please complete all fields");
+
       }
     });
   });
+
+  $('#log-out').click(function(event) {
+    if (window.confirm("Are you sure you want to log out?")) {
+      event.preventDefault();
+      $.ajax({
+        type: 'DELETE',
+        url: '/sessions',
+        success: function(response){
+        console.log("Now logging out", response);
+        window.location.href = "/";  
+        }
+      })
+    }  
+  })
 });
+
