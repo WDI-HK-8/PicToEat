@@ -62,29 +62,44 @@ exports.register = function(server, options, next){
           db.collection('users').find().toArray(function(err, users){
             if (err) { return reply("Internal MongoDB error"); }
             reply(users);
+            console.log(session);
           });
         });
       }
     },
-//-------------Working on
-    // {
-    //   method: 'PATCH',
-    //   path: '/users',
-    //   handler: function(request,reply){
-    //     Auth.authenticated(request, function(result){
-    //       if (!session) { 
-    //         reply('Not logged in');
-    //         return reply(session);
-    //       }
-        
-    //       db.collection('users').findOne( { username: user.username }, function(err, userMongo){
-    //         if (err) { return reply('Internal MongoDb error'); }
-    //         reply();
-    //       });
-    //     });
-    //   }
-    // }
-//---------------
+    {
+      method: 'PUT',
+      path: '/users',
+      config: {
+        handler: function(request,reply){
+          Auth.authenticated(request, function(session){
+            if (!session) { 
+              reply('Not logged in');
+              return reply(session);
+            }
+
+          var db = request.server.plugins['hapi-mongodb'].db;
+          var user = request.payload.user;
+
+            db.collection('users').update( { _id: session.user_id }, { $set: user }, function(err, userMongoUpdate){
+              if (err) { return reply('Internal MongoDb error'); }
+              
+              reply(userMongoUpdate);
+            });
+          });
+        },
+        validate: {
+          payload: {
+            user: {
+              email: Joi.string().email().max(50).required(),
+              username: Joi.string().min(2).max(20).required(),
+              password: Joi.string().min(5).max(20).required()
+            }
+          }
+        }    
+      }          
+    }
+
   ]);
   next();
 }

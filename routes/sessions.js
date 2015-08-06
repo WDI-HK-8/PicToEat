@@ -13,7 +13,7 @@ exports.register = function(server, options, next) {
         var user = request.payload.user;
         db.collection('users').findOne( { username: user.username }, function(err, userMongo){
           if (err) { return reply('Internal MongoDb error'); }
-          console.log(userMongo)
+          console.log(userMongo);
           if (userMongo === null) { 
             return reply( {userExist: false} ) 
           }
@@ -37,6 +37,8 @@ exports.register = function(server, options, next) {
               return reply('Internal MongoDb error', err);
             }
             request.session.set('pic2eat_session', session);
+
+            // Not sure if I need this..?
             // return reply({ authorized: true });
             reply(writeResult);
             });
@@ -56,7 +58,7 @@ exports.register = function(server, options, next) {
     {
       method: 'DELETE',
       path: '/sessions',
-      handler: function(request,reply){
+      handler: function(request, reply){
         var session = request.session.get('pic2eat_session');
         var db = request.server.plugins['hapi-mongodb'].db;
         if (!session) { return reply('You have already logged out') }
