@@ -29,6 +29,13 @@ exports.register = function(server, option, next) {
     handler: function(request,reply) {
       reply.view('sign-up');
     }
+  },
+  {
+    method: 'GET',
+    path: '/profile',
+    handler: function(request,reply) {
+      reply.view('profile');
+    }
   }
   ]);
   next();
