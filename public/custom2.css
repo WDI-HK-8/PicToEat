@@ -51,6 +51,14 @@ input, button {
   border: 2px solid #339793;
 }
 
+#searchbar-input, #addphoto-input {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  border-color: #339793; 
+  height: 50px;
+  margin-top: 20px;  
+}
+
 #searchbar, #addphoto {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 20px;
