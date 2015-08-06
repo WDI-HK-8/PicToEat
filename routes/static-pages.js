@@ -4,7 +4,7 @@ exports.register = function(server, option, next) {
     method: 'GET',
     path: '/',
     handler: function(request, reply){
-      reply.view('index');
+      reply.view('index', {layout: 'layout'});
     }
   },
   {
@@ -20,21 +20,21 @@ exports.register = function(server, option, next) {
     method: 'GET',
     path: '/home',
     handler: function(request,reply) {
-      reply.view('home');
+      reply.view('home', {layout: 'layout'});
     }
   },
   {
     method: 'GET',
     path: '/sign-up',
     handler: function(request,reply) {
-      reply.view('sign-up');
+      reply.view('sign-up', {layout: 'layout'});
     }
   },
   {
     method: 'GET',
     path: '/profile',
     handler: function(request,reply) {
-      reply.view('profile');
+      reply.view('profile', {layout: 'layout'});
     }
   }
   ]);

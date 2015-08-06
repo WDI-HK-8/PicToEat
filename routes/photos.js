@@ -15,7 +15,6 @@ exports.register = function(server, option, next){
           db.collection('photos').find().toArray(function(err, photos){
             if (err) { return reply("Internal MongoDB error"); }
             reply(photos);
-            console.log('hello there');
           });
         })
       }

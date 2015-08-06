@@ -19,7 +19,9 @@ server.views({
   engines: {
     html: require('handlebars')
   },
-  path: Path.join(__dirname, 'templates')
+  path: Path.join(__dirname, 'templates'),
+  layout: true,
+  layoutPath: 'templates/layout'
 });
 
 var plugins = [
