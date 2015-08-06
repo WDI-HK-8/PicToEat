@@ -3,7 +3,6 @@
   <title>PicForEating</title>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<!--   <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>  --> 
   <script type="text/javascript" src="public/application.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   
@@ -18,7 +17,7 @@
 <body>
   <div class="wrapper">
     <div class="container-fluid">
-      <!-- Header -->
+      <!-- Top Nav Bar -->
       <div class="row" id="topbar">
         <div class="col-xs-4" >
           <h1>PicForEating</h1>
@@ -36,10 +35,17 @@
           <a href="/home" id="log-out">Log Out</a>
         </div>
       </div>
+      <!-- Main Section -->
       <div class="row">
         <div class="col-xs-12">
           <div id="main">
-          <h2>Your Favourites</h2>
+            <h2>Your Favourites</h2>
+            <!-- Add image bar -->
+            <input type="text" class="form-control" id="addphoto" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" id="addphoto" type="button">Search</button>
+            </span>
+            <!-- Photos -->
             <div class="row">  
               <div class="col-xs-3"><img src="/public/images/temp/bagel-with-cream-cheese-and-lox.jpg" /></div>  
               <div class="col-xs-3"><img src="/public/images/temp/halloumi-and-vegetable-skewers-5.jpg" /></div>  

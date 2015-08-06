@@ -38,6 +38,7 @@ exports.register = function(server, options, next) {
             }
             request.session.set('pic2eat_session', session);
 
+            // Not sure if I need this..?
             // return reply({ authorized: true });
             reply(writeResult);
             });
@@ -57,7 +58,7 @@ exports.register = function(server, options, next) {
     {
       method: 'DELETE',
       path: '/sessions',
-      handler: function(request,reply){
+      handler: function(request, reply){
         var session = request.session.get('pic2eat_session');
         var db = request.server.plugins['hapi-mongodb'].db;
         if (!session) { return reply('You have already logged out') }

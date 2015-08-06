@@ -1,7 +1,12 @@
-function wrongLoginInfo(message) {
+function errorInfoMessage(message) {
     $("<div />", { class: 'wrongInfo', text: message }).hide().prependTo("body")
       .slideDown('slow').delay(5000).slideUp(function() { $(this).remove(); });
-}
+};
+
+function successMessage(message) {
+    $("<div />", { class: 'rightInfo', text: message }).hide().prependTo("body")
+      .slideDown('slow').delay(5000).slideUp(function() { $(this).remove(); });
+};
 
 $(document).ready(function(){
   
@@ -36,7 +41,7 @@ $(document).ready(function(){
         window.location.href = "/home";
         } else {
           console.log("No such user or wrong password");
-          wrongLoginInfo("Sorry, incorrect username and/or password");
+          errorInfoMessage("Sorry, incorrect username and/or password");
         }
       }
     });
@@ -57,14 +62,14 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: function(response) { 
-        if (response.ok === 1) { 
+        if (response.ok) { 
           console.log("Success", response);
           window.location.href = "/home";
           }
         },
         error: function(response){
           console.log("Validation failed");
-          wrongLoginInfo("Please complete all fields");
+          errorInfoMessage("Please complete all fields");
 
         }
     });
@@ -87,6 +92,7 @@ $(document).ready(function(){
   });
 
   $('#update-details').click(function(event) {
+    event.preventDefault();
     $.ajax({
       type: 'PUT',
       url: '/users',
@@ -102,8 +108,48 @@ $(document).ready(function(){
       }
     })
   });
+//-----------search & upload photos 
+  $('#search').click(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: 'GET',
+      url: '/photos',
+      data: {
+        //...
+      },
+      dataType: 'json',
+      success: function(response){
+        console.log('All photos listed', response);
+      },
+      error: function(response){
+        console.log("photo upload failed");
+        errorInfoMessage("Sorry, try again");
+      }
+    })
+  });
 
-//=====================working on
+  $('#addphoto').click(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/photos',
+      data: {
+        //...
+      },
+      dataType: 'json',
+      success: function(response){
+        console.log('All photos listed', response);
+        successMessage("Your yummy dish has been added!");
+      },
+      error: function(response){
+        console.log("Photo upload failed");
+        errorInfoMessage("Sorry, issue with upload. Please try again");
+
+      }
+    })
+  });
+
+//=====================to be worked on, list user info on profile
 
   //  $('#details').html(html);
 
@@ -138,11 +184,6 @@ $(document).ready(function(){
 
 
 //=================================
-
-
-
-
-
 
 
 });

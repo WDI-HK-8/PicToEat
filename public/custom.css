@@ -63,6 +63,16 @@ input, button {
     color: white;
 }
 
+.rightInfo {
+    background: #339793; 
+    border-bottom: solid 2px #FFFFFF; 
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    padding: 5px 0; 
+    text-align: center; 
+    color: white;
+}
+
 button:hover, button:focus {
   background-color: #0B6F6B;
   border-color: #71BCB8
